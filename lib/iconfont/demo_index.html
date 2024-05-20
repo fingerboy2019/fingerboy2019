@@ -1,91 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="IconFont Demo                                     &#xe86b;                     Unicode         Font class         Symbol                     查看项目">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/lib/iconfont/demo_index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="IconFont Demo                                     &#xe86b;                     Unicode         Font class         Symbol                     查看项目">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-05-18T08:07:32.923Z">
-<meta property="article:modified_time" content="2024-05-18T08:07:32.923Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-  
-<meta name="generator" content="Hexo 7.2.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/lib/iconfont/demo_index.html" class="article-date">
-  <time class="dt-published" datetime="2024-05-18T08:07:32.923Z" itemprop="datePublished">2024-05-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <!DOCTYPE html>
-<html>
-<head>
   <meta charset="utf-8"/>
   <title>IconFont Demo</title>
   <link rel="shortcut icon" href="https://img.alicdn.com/tps/i4/TB1_oz6GVXXXXaFXpXXJDFnIXXX-64-64.ico" type="image/x-icon"/>
@@ -336,7 +251,7 @@
           <p>Unicode 使用步骤如下：</p>
           <h3 id="-font-face">第一步：拷贝项目下面生成的 <code>@font-face</code></h3>
 <pre><code class="language-css"
->@font-face &#123;
+>@font-face {
   font-family: 'nexmoefont';
   src: url('iconfont.eot');
   src: url('iconfont.eot?#iefix') format('embedded-opentype'),
@@ -344,17 +259,17 @@
       url('iconfont.woff') format('woff'),
       url('iconfont.ttf') format('truetype'),
       url('iconfont.svg#nexmoefont') format('svg');
-&#125;
+}
 </code></pre>
           <h3 id="-iconfont-">第二步：定义使用 iconfont 的样式</h3>
 <pre><code class="language-css"
->.nexmoefont &#123;
+>.nexmoefont {
   font-family: "nexmoefont" !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-&#125;
+}
 </code></pre>
           <h3 id="-">第三步：挑选相应图标并获取字体编码，应用于页面</h3>
 <pre>
@@ -995,13 +910,13 @@
 </code></pre>
           <h3 id="-css-">第二步：加入通用 CSS 代码（引入一次就行）：</h3>
 <pre><code class="language-html">&lt;style&gt;
-.icon &#123;
+.icon {
   width: 1em;
   height: 1em;
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
-&#125;
+}
 &lt;/style&gt;
 </code></pre>
           <h3 id="-">第三步：挑选相应图标并获取类名，应用于页面：</h3>
@@ -1033,122 +948,5 @@
       })
     })
   </script>
-<!-- hexo injector body_end start -->
-<script src="https://lib.baomitu.com/clipboard.js/2.0.8/clipboard.min.js"></script>
-
-<script src="/lib/codeBlock/codeBlockFuction.js"></script>
-
-<script src="/lib/codeBlock/codeLang.js"></script>
-
-<script src="/lib/codeBlock/codeCopy.js"></script>
-
-<script src="/lib/codeBlock/codeShrink.js"></script>
-
-<link rel="stylesheet" href="/lib/codeBlock/matery.css">
-
-<script src="/js/clock.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-
-<script src="/js/search.js"></script>
-
-<script src="/js/webapp.js"></script>
-<!-- hexo injector body_end end --></body>
-</html>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/lib/iconfont/demo_index.html" data-id="clwbu4hcd000fjod3e5pp9d5h" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2024/05/18/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2024 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
 </body>
 </html>
