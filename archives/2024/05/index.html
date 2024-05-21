@@ -31,7 +31,7 @@
   
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
   
-  <link rel="stylesheet" href="/css/style.css?v=1716260741402">
+  <link rel="stylesheet" href="/css/style.css?v=1716260962900">
 <meta name="generator" content="Hexo 7.2.0"></head>
 
 <body class="mdui-drawer-body-left">
@@ -56,9 +56,9 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div class="nexmoe-count-item"><span>Articles</span>2 <div class="item-radius"></div><div class="item-radius item-right"></div> </div>
-        <div class="nexmoe-count-item"><span>Tags</span>2<div class="item-radius"></div><div class="item-radius item-right"></div></div>
-        <div class="nexmoe-count-item"><span>Categories</span>1<div class="item-radius"></div><div class="item-radius item-right"></div></div>
+        <div class="nexmoe-count-item"><span>Articles</span>3 <div class="item-radius"></div><div class="item-radius item-right"></div> </div>
+        <div class="nexmoe-count-item"><span>Tags</span>3<div class="item-radius"></div><div class="item-radius item-right"></div></div>
+        <div class="nexmoe-count-item"><span>Categories</span>2<div class="item-radius"></div><div class="item-radius item-right"></div></div>
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
         
@@ -151,6 +151,13 @@
         </li>
 
         
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/学习成长/">学习成长</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
       </ul>
 
     </div>
@@ -161,7 +168,7 @@
   
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/" style="font-size: 10px;">个人感悟</a> <a href="/tags/%E6%97%A0%E8%81%8A%E5%88%86%E4%BA%AB/" style="font-size: 10px;">无聊分享</a>
+      <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/" style="font-size: 10px;">个人感悟</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E6%88%90%E9%95%BF/" style="font-size: 10px;">学习成长</a> <a href="/tags/%E6%97%A0%E8%81%8A%E5%88%86%E4%BA%AB/" style="font-size: 10px;">无聊分享</a>
     </div>
     
   </div>
@@ -171,7 +178,7 @@
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">Archive</h3>
     <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -207,6 +214,73 @@
   <div id="nexmoe-content">
     <div class="nexmoe-primary">
         <section class="nexmoe-posts">
+    
+    <div class="nexmoe-post">
+        <a href="/2024/05/21/00001/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 24.305555555555554%;">
+                    <img data-src="/images/background/xiaomai.jpg" data-sizes="auto" alt="利用闲置服务器搭建一个专属图床加速器" class="lazyload">
+                    <h1>利用闲置服务器搭建一个专属图床加速器</h1>
+                </div>
+            
+        </a>
+        
+        <div class="nexmoe-post-meta nexmoe-rainbow">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月21日</a>
+            <a><i class="nexmoefont icon-areachart"></i>862 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
+        </div>
+        
+        <article>
+            
+                <h1 id="利用闲置服务器搭建一个专属图床加速器"><a href="#利用闲置服务器搭建一个专属图床加速器" class="headerlink" title="利用闲置服务器搭建一个专属图床加速器"></a>利用闲置服务器搭建一个专属图床加速器</h1><ol>
+<li><a href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6">1. 前提条件</a></li>
+<li><a href="#%E6%95%99%E7%A8%8B">2. 教程</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93">3. 总结</a></li>
+</ol>
+<h3 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a><a href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" title="前提条件"></a>前提条件</h3><ul>
+<li>一台国内能流畅访问且能正常访问Github的服务器</li>
+<li>Nginx</li>
+<li>域名（非必需）</li>
+<li>Python</li>
+</ul>
+<p>关于图床和Nginx的教程，你可以查看之前的文章。</p>
+<h3 id="教程"><a href="#教程" class="headerlink" title="教程"></a><a href="#%E6%95%99%E7%A8%8B" title="教程"></a>教程</h3><p><strong>第一步：</strong></p>
+<p>拉取Github图片仓库到&#x2F;var&#x2F;www&#x2F;目录下。请替换下面命令中的仓库地址为你自己的地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/image</span><br></pre></td></tr></table></figure>
+
+<p><strong>第二步：</strong></p>
+<p>配置Nginx，映射当前图片仓库目录。假设我的图片仓库地址是：&#x2F;var&#x2F;www&#x2F;image。以下配置的作用是，当访问 <a target="_blank" rel="noopener" href="http://aaa.wangwangit.com/img/1.jpg">http://aaa.wangwangit.com/img/1.jpg</a> 时，会实际访问服务器上的 &#x2F;var&#x2F;www&#x2F;image&#x2F;img&#x2F;1.jpg 文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name aaa.wangwangit.com;</span><br><span class="line">    root /var/www/html;</span><br><span class="line"> </span><br><span class="line">    location /img &#123;</span><br><span class="line">        root /var/www/image/;</span><br><span class="line">        autoindex on;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完成修改后，执行 <code>nginx -s reload</code> 命令来更新配置。</p>
+<p><strong>第三步：</strong></p>
+<p>上面两步实际上已经配置好了图床的加速器。我们只需要使用自己的域名地址进行访问即可。也许你会问为什么要使用Github，而不是直接将图片存储在服务器上。这样做有几个原因：首先，我的以前的图片已经存在Github上了；另外，使用Github的话，我不需要自己去维护图床。</p>
+<p>接下来，我们还需要及时拉取Github图床的更新。下面我来介绍如何实现这一点。</p>
+<p>我们可以使用Github的Webhook功能，在服务器的&#x2F;var&#x2F;www&#x2F;目录下创建一个名为webhook_receiver.py的Python文件，并编辑以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask, request</span><br><span class="line">import subprocess</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/webhook&#x27;, methods=[&#x27;POST&#x27;])</span><br><span class="line">def webhook():</span><br><span class="line">    if request.headers.get(&#x27;X-GitHub-Event&#x27;) == &#x27;push&#x27;:</span><br><span class="line">        subprocess.Popen([&#x27;git&#x27;, &#x27;-C&#x27;, &#x27;/var/www/image&#x27;, &#x27;pull&#x27;])</span><br><span class="line">        return &#x27;Webhook received successfully&#x27;, 200</span><br><span class="line">    else:</span><br><span class="line">        return &#x27;Unsupported event&#x27;, 200</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    app.run(host=&#x27;0.0.0.0&#x27;, port=5000)</span><br></pre></td></tr></table></figure>
+
+<p>保存文件后，执行 <code>pip install flask</code> 命令来安装依赖。你可以先使用 <code>python3 webhook_receiver.py</code> 命令进行测试，确认是否正常运行。若一切正常，可以使用 <code>Ctrl+c</code> 结束执行，然后使用 <code>nohup python3 webhook_receiver.py &amp;</code> 命令来运行它。</p>
+<p>接下来，在Github项目中设置Webhook：</p>
+<ol>
+<li>打开你的项目页面，点击 “Settings”（设置）选项卡。</li>
+<li>在左侧导航栏中选择 “Webhooks”（Web钩子）。</li>
+<li>点击 “Add webhook”（添加Webhook）按钮。</li>
+<li>在 “Payload URL”（有效载荷 URL）字段中输入 <code>http://your-server-ip:5000/webhook</code>，将 <code>your-server-ip</code> 替换为你服务器的实际IP地址。</li>
+<li>在 “Content type”（内容类型）字段中选择 “application&#x2F;json”。</li>
+<li>在 “Secret”（密钥）字段中输入一个可选的密钥，用于在请求中进行身份验证。</li>
+<li>在 “Which events would you like to trigger this webhook?”（您想要触发此Webhook的事件？）部分选择 “Just the push event”（仅推送事件）选项。</li>
+<li>确保 “Active”（启用）复选框被选中。</li>
+<li>点击 “Add webhook”（添加Webhook）按钮保存设置。</li>
+</ol>
+<img width="908" height="487" src=":/10f054a3113f47dc8dda25f4d7da3dc5"/>
+
+<p>至此，部署完成。只需要在图床仓库上传一张图片，然后使用服务器的域名去访问，就可以测试是否配置正常了！</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><a href="#%E6%80%BB%E7%BB%93" title="总结"></a>总结</h3><p>我在文章中提到的几个方案，在之前的文章中都有详细介绍。如果你还有不懂的地方，可以去查看相关文章，或者加入我的交流学习群一起探讨！</p>
+
+            
+        </article>
+    </div>
     
     <div class="nexmoe-post">
         <a href="/2024/05/20/study-for-hexo/">
@@ -970,7 +1044,7 @@
 <script src="/lib/fancybox/js/jquery.fancybox.min.js"></script>
 
 
-<script src="/js/app.js?v=1716260741407"></script>
+<script src="/js/app.js?v=1716260962905"></script>
 
 <script src="https://lib.baomitu.com/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
 <script>
@@ -987,11 +1061,13 @@
 
 
 <!-- hexo injector body_end start -->
-<script src="/js/clock.js"></script>
-
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 <script src="/js/search.js"></script>
+
+<script src="/js/webapp.js"></script>
+
+<script src="/js/clock.js"></script>
 
 <script src="https://lib.baomitu.com/clipboard.js/2.0.8/clipboard.min.js"></script>
 
@@ -1004,8 +1080,6 @@
 <script src="/lib/codeBlock/codeShrink.js"></script>
 
 <link rel="stylesheet" href="/lib/codeBlock/matery.css">
-
-<script src="/js/webapp.js"></script>
 <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
 

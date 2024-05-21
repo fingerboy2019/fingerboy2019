@@ -5,7 +5,7 @@
 <head>
   
   <meta name="baidu-site-verification" content="code-J1Qg17G6wT" />
-  <title>Archive：2024 - Fingerboy的私人空间</title>
+  <title>利用闲置服务器搭建一个专属图床加速器 - Fingerboy的私人空间</title>
   <meta charset="UTF-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
@@ -16,13 +16,20 @@
     <meta name="baidu-site-verification" content="code-J1Qg17G6wT" />
 
   <link rel="shortcut icon" href="/images/head/head.jpg" type="image/png" />
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Fingerboy的私人空间">
-<meta property="og:url" content="http://blog.icandy.top/archives/2024/index.html">
+  <meta name="description" content="利用闲置服务器搭建一个专属图床加速器 1. 前提条件 2. 教程 3. 总结  前提条件 一台国内能流畅访问且能正常访问Github的服务器 Nginx 域名（非必需） Python  关于图床和Nginx的教程，你可以查看之前的文章。 教程第一步： 拉取Github图片仓库到&#x2F;var&#x2F;www&#x2F;目录下。请替换下面命令中的仓库地址为你自己的地址。 1git clone">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用闲置服务器搭建一个专属图床加速器">
+<meta property="og:url" content="http://blog.icandy.top/2024/05/21/00001/index.html">
 <meta property="og:site_name" content="Fingerboy的私人空间">
+<meta property="og:description" content="利用闲置服务器搭建一个专属图床加速器 1. 前提条件 2. 教程 3. 总结  前提条件 一台国内能流畅访问且能正常访问Github的服务器 Nginx 域名（非必需） Python  关于图床和Nginx的教程，你可以查看之前的文章。 教程第一步： 拉取Github图片仓库到&#x2F;var&#x2F;www&#x2F;目录下。请替换下面命令中的仓库地址为你自己的地址。 1git clone">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.icandy.top/2024/05/21/00001/:/10f054a3113f47dc8dda25f4d7da3dc5">
+<meta property="article:published_time" content="2024-05-21T02:57:27.000Z">
+<meta property="article:modified_time" content="2024-05-21T03:09:13.288Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="学习成长">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.icandy.top/2024/05/21/00001/:/10f054a3113f47dc8dda25f4d7da3dc5">
   <link rel="stylesheet" href="https://lib.baomitu.com/highlight.js/9.15.8/styles/atom-one-dark.min.css" crossorigin>
   <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css">
   <link rel="stylesheet" href="/lib/iconfont/iconfont.css">
@@ -31,7 +38,7 @@
   
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
   
-  <link rel="stylesheet" href="/css/style.css?v=1716260962892">
+  <link rel="stylesheet" href="/css/style.css?v=1716260962863">
 <meta name="generator" content="Hexo 7.2.0"></head>
 
 <body class="mdui-drawer-body-left">
@@ -213,27 +220,27 @@
   </div>
   <div id="nexmoe-content">
     <div class="nexmoe-primary">
-        <section class="nexmoe-posts">
+        <div class="nexmoe-post">
     
-    <div class="nexmoe-post">
-        <a href="/2024/05/21/00001/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 24.305555555555554%;">
-                    <img data-src="/images/background/xiaomai.jpg" data-sizes="auto" alt="利用闲置服务器搭建一个专属图床加速器" class="lazyload">
-                    <h1>利用闲置服务器搭建一个专属图床加速器</h1>
-                </div>
-            
-        </a>
-        
-        <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月21日</a>
-            <a><i class="nexmoefont icon-areachart"></i>862 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
+        <div class="nexmoe-post-cover"
+             style="padding-bottom: 24.305555555555554%;">
+            <img data-src="/images/background/xiaomai.jpg" data-sizes="auto" alt="利用闲置服务器搭建一个专属图床加速器" class="lazyload">
+            <h1>利用闲置服务器搭建一个专属图床加速器</h1>
         </div>
-        
-        <article>
+    
+
+        <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月21日</a>
+    <a><i class="nexmoefont icon-areachart"></i>862 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
+</div>
+
+        <div class="nexmoe-post-right">
             
-                <h1 id="利用闲置服务器搭建一个专属图床加速器"><a href="#利用闲置服务器搭建一个专属图床加速器" class="headerlink" title="利用闲置服务器搭建一个专属图床加速器"></a>利用闲置服务器搭建一个专属图床加速器</h1><ol>
+        </div>
+
+        <article>
+            <h1 id="利用闲置服务器搭建一个专属图床加速器"><a href="#利用闲置服务器搭建一个专属图床加速器" class="headerlink" title="利用闲置服务器搭建一个专属图床加速器"></a>利用闲置服务器搭建一个专属图床加速器</h1><ol>
 <li><a href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6">1. 前提条件</a></li>
 <li><a href="#%E6%95%99%E7%A8%8B">2. 教程</a></li>
 <li><a href="#%E6%80%BB%E7%BB%93">3. 总结</a></li>
@@ -278,58 +285,45 @@
 <p>至此，部署完成。只需要在图床仓库上传一张图片，然后使用服务器的域名去访问，就可以测试是否配置正常了！</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><a href="#%E6%80%BB%E7%BB%93" title="总结"></a>总结</h3><p>我在文章中提到的几个方案，在之前的文章中都有详细介绍。如果你还有不懂的地方，可以去查看相关文章，或者加入我的交流学习群一起探讨！</p>
 
-            
         </article>
-    </div>
-    
-    <div class="nexmoe-post">
-        <a href="/2024/05/20/study-for-hexo/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 24.305555555555554%;">
-                    <img data-src="/images/background/xiaomai.jpg" data-sizes="auto" alt="学习hexo博客系统" class="lazyload">
-                    <h1>学习hexo博客系统</h1>
-                </div>
-            
-        </a>
-        
-        <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月20日</a>
-            <a><i class="nexmoefont icon-areachart"></i>0 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
-        </div>
-        
-        <article>
-            
-                
-            
-        </article>
-    </div>
-    
-    <div class="nexmoe-post">
-        <a href="/2024/05/20/frist-artice/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 26.666666666666668%;">
-                    <img data-src="/images/post/markerdown.jpg" data-sizes="auto" alt="博客的第一篇文章" class="lazyload">
-                    <h1>博客的第一篇文章</h1>
-                </div>
-            
-        </a>
-        
-        <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月20日</a>
-            <a><i class="nexmoefont icon-areachart"></i>20 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
-        </div>
-        
-        <article>
-            
-                <h1 id="我的第一篇文章"><a href="#我的第一篇文章" class="headerlink" title="我的第一篇文章"></a>我的第一篇文章</h1><p>这是网站创建后的第一篇文章。</p>
 
+        
             
-        </article>
-    </div>
+  <div class="nexmoe-post-copyright">
+    <strong>Author：</strong>fingerboy<br>
     
+    <strong>Link：</strong><a href="http://blog.icandy.top/2024/05/21/00001/" title="http:&#x2F;&#x2F;blog.icandy.top&#x2F;2024&#x2F;05&#x2F;21&#x2F;00001&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;blog.icandy.top&#x2F;2024&#x2F;05&#x2F;21&#x2F;00001&#x2F;</a><br>
+
+    
+  </div>
+
+
+        
+
+        <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%AD%A6%E4%B9%A0%E6%88%90%E9%95%BF/">学习成长</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%88%90%E9%95%BF/" rel="tag">学习成长</a>
+    
+</div>
+
+    <div class="nexmoe-post-footer">
+        <section class="nexmoe-comment">
+    <div class="valine"></div>
+<script src='https://lib.baomitu.com/valine/1.3.9/Valine.min.js'></script>
+<script>
+    // 使用方法 https://valine.js.org/quickstart.html
+    new Valine({
+        el: '.valine',
+        appId: 'r5zxC0st0DDjPA9auXzMV7HY-gzGzoHsz',
+        appKey: '3bqCsovpyfTPHUzTHovd3V3V'
+    })
+</script>
 </section>
+    </div>
+</div>
 
 
         <div class="nexmoe-post-right">
@@ -1044,7 +1038,7 @@
 <script src="/lib/fancybox/js/jquery.fancybox.min.js"></script>
 
 
-<script src="/js/app.js?v=1716260962898"></script>
+<script src="/js/app.js?v=1716260962869"></script>
 
 <script src="https://lib.baomitu.com/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
 <script>
