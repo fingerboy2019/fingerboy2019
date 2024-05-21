@@ -1,0 +1,6 @@
+{
+"zhubo": [
+{ "address":"http://extlive-pull-ws.inke.cn/live/1711436358515296.flv?auth_version=1&codecInfo=8192&dpSrc=-1&from=hallfe&ikDnsOp=1&ikHost=ws&ikLiveType=multiplayer&ikLog=1&ikNetOp=01111&ikOp=0&md5sum=e603&pushHost=zego-sixlive.link.inke.cn&timestamp=1711438674","img":"http://img.ikstatic.cn/MTcwNTU2MjE2ODU2OCMgMjAjanBn.jpg","title":"\u9082\u9005\u4F73\u4EBA\u4EA4\u53CB\u5385"},
+{ "address":"rtmp://pull0629.lxhyouth.xyz/live/2","img":"http://sy1591.zjyui.top/upload//thumb/20240312/07635824131181369.png","title":"\u540E\u8D77\u4E4B\u79C0%3F%3F%3F\u5B87\u5B50\u4EA4\u53CB\u5385%3F%3F"}
+]
+}
