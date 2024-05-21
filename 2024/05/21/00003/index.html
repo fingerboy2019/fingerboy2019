@@ -6,7 +6,7 @@
 <head>
   
   <meta name="baidu-site-verification" content="code-J1Qg17G6wT" />
-  <title>奇思妙想</title>
+  <title>创建快速稳定的WebSocket长链接 - 奇思妙想</title>
   <meta charset="UTF-8">
   <meta name="description" content="发布一些自己的想法，留一些网络印记。">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
@@ -17,14 +17,17 @@
     <meta name="baidu-site-verification" content="code-J1Qg17G6wT" />
 
   <link rel="shortcut icon" href="/images/head/head.jpg" type="image/png" />
-  <meta name="description" content="发布一些自己的想法，留一些网络印记。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="奇思妙想">
-<meta property="og:url" content="http://blog.icandy.top/index.html">
+  <meta name="description" content="创建快速稳定的WebSocket长链接&nbsp;       在一个完善的即时信息应用中，WebSocket是极其关键的一环，它为基于Web的即时通讯应用提供了一种全双工的通信机制。但为了提升实际应用场景下的消息即时性和可靠性，我们需要克服WebSocket及其底层依赖的TCP连接对于复杂网络情况下的不稳定性，即时通讯的开发者们通常都需要为其设计一套完整的连接保活、验活以及断片网重连方案。就断网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="创建快速稳定的WebSocket长链接">
+<meta property="og:url" content="http://blog.icandy.top/2024/05/21/00003/index.html">
 <meta property="og:site_name" content="奇思妙想">
-<meta property="og:description" content="发布一些自己的想法，留一些网络印记。">
+<meta property="og:description" content="创建快速稳定的WebSocket长链接&nbsp;       在一个完善的即时信息应用中，WebSocket是极其关键的一环，它为基于Web的即时通讯应用提供了一种全双工的通信机制。但为了提升实际应用场景下的消息即时性和可靠性，我们需要克服WebSocket及其底层依赖的TCP连接对于复杂网络情况下的不稳定性，即时通讯的开发者们通常都需要为其设计一套完整的连接保活、验活以及断片网重连方案。就断网">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-21T03:50:55.000Z">
+<meta property="article:modified_time" content="2024-05-21T06:21:15.461Z">
 <meta property="article:author" content="fingerboy">
+<meta property="article:tag" content="学习成长">
 <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="https://lib.baomitu.com/highlight.js/9.15.8/styles/atom-one-dark.min.css" crossorigin>
   <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css">
@@ -34,7 +37,7 @@
   
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
   
-  <link rel="stylesheet" href="/css/style.css?v=1716273912611">
+  <link rel="stylesheet" href="/css/style.css?v=1716273912547">
 <meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/rss.xml" title="奇思妙想" type="application/rss+xml">
 </head>
 
@@ -224,89 +227,26 @@
   </div>
   <div id="nexmoe-content">
     <div class="nexmoe-primary">
-        <section class="nexmoe-posts">
+        <div class="nexmoe-post">
     
-    <div class="nexmoe-post">
-        <a href="/2024/05/21/00002/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 26.666666666666668%;">
-                    <img data-src="/images/post/JavaScript.jpg" data-sizes="auto" alt="屏蔽页面调试" class="lazyload">
-                    <h1>屏蔽页面调试</h1>
-                </div>
-            
-        </a>
-        
-        <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月21日</a>
-            <a><i class="nexmoefont icon-areachart"></i>172 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+        <div class="nexmoe-post-cover" style="padding-bottom: 26.666666666666668%;">
+            <img data-src="/images/post/JavaScript.jpg" data-sizes="auto" alt="创建快速稳定的WebSocket长链接" class="lazyload">
+            <h1>创建快速稳定的WebSocket长链接</h1>
         </div>
-        
-        <article>
-            
-                <h1 id="屏蔽页面调试的js代码"><a href="#屏蔽页面调试的js代码" class="headerlink" title="屏蔽页面调试的js代码"></a>屏蔽页面调试的js代码</h1><pre><code class="highlight plaintext">&lt;script type=&quot;text/javascript&quot;&gt;   
-	document.onkeydown=function()&#123;
-		var e = window.event||arguments[0];
-			if(e.keyCode==123)&#123;
-				alert(&#x27;你知道的太多了&#x27;);
-				return false;
-			&#125;
-         
-		if((e.ctrlKey)&amp;&amp;(e.shiftKey)&amp;&amp;(e.keyCode==73))&#123;
-			alert(&#x27;你知道的太多了&#x27;);
-			return false;
-		&#125;
-		if((e.ctrlKey)&amp;&amp;(e.keyCode==85))&#123;
-			alert(&#x27;你知道的太多了&#x27;);
-			return false;
-		&#125;
-		if((e.ctrlKey)&amp;&amp;(e.keyCode==83))&#123;
-		   alert(&#x27;你知道的太多了&#x27;);
-		   return false;
-		&#125;
-        	&#125;
-   
-	document.oncontextmenu=function()&#123;
-		alert(&#x27;你知道的太多了&#x27;);
-		return false;
-	&#125;
-  
-	var threshold = 160;
-	window.setInterval(function() &#123;  
-	    if (window.outerWidth - window.innerWidth &gt; threshold ||   
-	    window.outerHeight - window.innerHeight &gt; threshold) &#123;  
-			function disableDebugger() &#123;
-				debugger;
-			&#125;
-			$(document).ready(function () &#123;
-				disableDebugger();
-			&#125;);
-	    &#125;  
-	&#125;, 1e3);
- &lt;/script&gt;</code></pre>
-            
-        </article>
-    </div>
     
-    <div class="nexmoe-post">
-        <a href="/2024/05/21/00003/">
+
+        <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月21日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.3k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
+</div>
+
+        <div class="nexmoe-post-right">
             
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 26.666666666666668%;">
-                    <img data-src="/images/post/JavaScript.jpg" data-sizes="auto" alt="创建快速稳定的WebSocket长链接" class="lazyload">
-                    <h1>创建快速稳定的WebSocket长链接</h1>
-                </div>
-            
-        </a>
-        
-        <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月21日</a>
-            <a><i class="nexmoefont icon-areachart"></i>1.3k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
         </div>
-        
+
         <article>
-            
-                <h1 id="创建快速稳定的WebSocket长链接"><a href="#创建快速稳定的WebSocket长链接" class="headerlink" title="创建快速稳定的WebSocket长链接"></a>创建快速稳定的WebSocket长链接</h1><p>&nbsp;       在一个完善的即时信息应用中，WebSocket是极其关键的一环，它为基于Web的即时通讯应用提供了一种全双工的通信机制。但为了提升实际应用场景下的消息即时性和可靠性，我们需要克服WebSocket及其底层依赖的TCP连接对于复杂网络情况下的不稳定性，即时通讯的开发者们通常都需要为其设计一套完整的连接保活、验活以及断片网重连方案。就断网重连而言，其重连响应速度将严重影响了上层应用的“即时性”和用户体验。</p>
+            <h1 id="创建快速稳定的WebSocket长链接"><a href="#创建快速稳定的WebSocket长链接" class="headerlink" title="创建快速稳定的WebSocket长链接"></a>创建快速稳定的WebSocket长链接</h1><p>&nbsp;       在一个完善的即时信息应用中，WebSocket是极其关键的一环，它为基于Web的即时通讯应用提供了一种全双工的通信机制。但为了提升实际应用场景下的消息即时性和可靠性，我们需要克服WebSocket及其底层依赖的TCP连接对于复杂网络情况下的不稳定性，即时通讯的开发者们通常都需要为其设计一套完整的连接保活、验活以及断片网重连方案。就断网重连而言，其重连响应速度将严重影响了上层应用的“即时性”和用户体验。</p>
 <p>&nbsp;       因此，如何在复杂网络场景下，更即时快速地感知网络变动，并快速恢复WebSocket的可用性，就变得尤为重要。本文分享WebSocket在不同状态下、不同的网络状态下，应该如何实现快速断网重连。</p>
 <h4 id="1-WebSocket长链接的基本使用"><a href="#1-WebSocket长链接的基本使用" class="headerlink" title="1. WebSocket长链接的基本使用"></a><a id="t0"></a>1. WebSocket长链接的基本使用</h4><pre><code class="highlight plaintext">// 定义几个变量检测状态
 var WS_URL = &quot;ws://127.0.0.1:9225/ws&quot;;  // websocket地址 http对应ws https对应wss
@@ -467,282 +407,45 @@ window.addEventListener(&quot;onWebSocketMessage&quot;, businessFunction);
 function businessFunction(data)&#123;
 	console.log(&quot;Data::::&quot;,data)
 &#125;</code></pre>
-            
         </article>
-    </div>
-    
-    <div class="nexmoe-post">
-        <a href="/2024/05/21/00004/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 26.666666666666668%;">
-                    <img data-src="/images/post/JavaScript.jpg" data-sizes="auto" alt="使用 Telegram 创建无限容量的云存储" class="lazyload">
-                    <h1>使用 Telegram 创建无限容量的云存储</h1>
-                </div>
-            
-        </a>
+
         
+            
+  <div class="nexmoe-post-copyright">
+    <strong>本文作者：</strong>fingerboy<br>
+    
+    <strong>本文链接：</strong><a href="http://blog.icandy.top/2024/05/21/00003/" title="http:&#x2F;&#x2F;blog.icandy.top&#x2F;2024&#x2F;05&#x2F;21&#x2F;00003&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;blog.icandy.top&#x2F;2024&#x2F;05&#x2F;21&#x2F;00003&#x2F;</a><br>
+
+    
+  </div>
+
+
+        
+
         <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月21日</a>
-            <a><i class="nexmoefont icon-areachart"></i>531 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 2 分钟</a>
-        </div>
-        
-        <article>
-            
-                <h1 id="TeleDrive-Unleash-Unlimited-Cloud-Storage-with-Telegram"><a href="#TeleDrive-Unleash-Unlimited-Cloud-Storage-with-Telegram" class="headerlink" title="TeleDrive: Unleash Unlimited Cloud Storage with Telegram"></a>TeleDrive: Unleash Unlimited Cloud Storage with Telegram</h1><p>大家好！今天，我将指导您使用 TeleDrive 在 Telegram 上创建无限的云存储解决方案。这个开源项目改变了游戏规则，通过 Telegram API 提供 Google Drive&#x2F;OneDrive 等功能。</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANTZkw-lz8AARpugt-Mxaz2T-HJKat4AAJZDQACeRdoVq4qYowhUWPKNQQ" alt="Alt Text" class="lazyload"></p>
-<p><strong>创建云</strong></p>
-<p>对于那些在各种论坛或 YouTube 上寻求信息的人来说，这是微不足道的选择。我花了大约 2 个小时来解码这个问题，因为脚本正在喝咖啡休息！事实证明，该修复程序在问题存储库中非常漂亮。😂</p>
-<p>与其浪费我们数百万美元的软件工程时间，不如让我们深入学习如何安装 TeleDrive。</p>
-<p><strong>搭建云储存</strong></p>
-<p>让我们从更新我们的软件包开始:</p>
-<pre><code class="highlight plaintext">apt-get update</code></pre>
-
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANUZkw-5UkPp24JnivrLWV9BYwtU5MAAloNAAJ5F2hW-m4AAUw-UihZNQQ" alt="Alt Text" class="lazyload"></p>
-<p>软后安装 Build-essentials:</p>
-<pre><code class="highlight plaintext">apt-get install build-essential</code></pre>
-
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANVZkw_C5Qb7ySlNdvtkaPLF6XSp98AAlsNAAJ5F2hWHsctHi4jemw1BA" alt="Alt Text" class="lazyload"></p>
-<p>接下来，让我们用 git-clone 获取 fork 存储库:</p>
-<pre><code class="highlight plaintext">git clone https://github.com/mgilangjanuar/teledrive.git</code></pre>
-
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANWZkw_Th3nDpRJ8RFWFUqr0jksPlgAAl0NAAJ5F2hWBoBdoRt7ZpU1BA" alt="Alt Text" class="lazyload"></p>
-<p>如果 Git不可用，请先安装Git:</p>
-<pre><code class="highlight plaintext">apt install git</code></pre>
-
-<p><strong>部署过程</strong></p>
-<p>首先安装NVM（Node版本管理器）:</p>
-<pre><code class="highlight plaintext">wget https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh</code></pre>
-
-<p>下载完脚本后:  </p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANXZkw_hOIugmfoj1C9M4qYyPa5LN4AAl4NAAJ5F2hW9RBjBtC66Hc1BA" alt="Alt Text" class="lazyload"></p>
-<pre><code class="highlight plaintext">bash install.sh
-source ~/.bashrc</code></pre>
-
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANYZkw_tDUXIOYhakHdcqkHwkOCB9UAAl8NAAJ5F2hWEhEa3fuPV281BA" alt="Alt Text" class="lazyload"></p>
-<p>确保 NVM 启动并运行:</p>
-<pre><code class="highlight plaintext">nvm -v</code></pre>
-
-<p><img src="/:/4f0a0beddf2248609d2554d956f1d308"></p>
-<p>用NVM安装 Node.JS 18.16.0:</p>
-<pre><code class="highlight plaintext">nvm install v18.16.0</code></pre>
-
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANZZkw__CgIJ8mgMTcx-R7YBzdh03MAAmANAAJ5F2hWwZem8BRua3M1BA" alt="Alt Text" class="lazyload"></p>
-<p>检查 Node.JS 和 NPM 到版本:</p>
-<pre><code class="highlight plaintext">node -v
-npm -v</code></pre>
-
-<p>现在，让我们进入下载的 GitHub 项目:</p>
-<pre><code class="highlight plaintext">cd teledrive</code></pre>
-
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANaZkxAKNDePwP4ZkaeK3p1YfQ14P0AAmINAAJ5F2hWPTlGrtHCJvQ1BA" alt="Alt Text" class="lazyload"></p>
-<p>我们需要安装 Yarn 和 PostgreSQL:</p>
-<pre><code class="highlight plaintext">sudo apt install postgresql -y</code></pre>
-
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANbZkxASZqp_m6ocVMP7jR-c0kOxdYAAmUNAAJ5F2hWDFwOeVbLSSM1BA" alt="Alt Text" class="lazyload"></p>
-<p>我们用常规方式安装 TeleDrive:</p>
-<pre><code class="highlight plaintext">chmod +x ./install.manual.sh
-./install.manual.sh</code></pre>
-
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANcZkxAeHEro4xzZNQbsntgc1Jd23oAAmYNAAJ5F2hWmNdil79ZSew1BA" alt="Alt Text" class="lazyload"></p>
-<p><strong>Configuring TeleDrive</strong></p>
-<p>Parameters will pop up that require filling:</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANdZkxAnPdYP3zz1mF8ttwjmNtcpgsAAmcNAAJ5F2hWuYDKi-ue8mE1BA" alt="Alt Text" class="lazyload"></p>
-<ul>
-<li><p>TG_API_ID: Application ID</p>
-</li>
-<li><p>TG_API_HASH: The hash</p>
-</li>
-</ul>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANeZkxAw7Vfl1yI8cgZ2f0OlqsKxZ4AAmgNAAJ5F2hWa6YmHtrTDZA1BA" alt="Alt Text" class="lazyload"></p>
-<ul>
-<li><p>ADMIN_USERNAME: Telegram username (should be admin)</p>
-</li>
-<li><p>DATABASE_URL: Your postgres database</p>
-</li>
-<li><p>PORT: Operational port</p>
-</li>
-<li><p>REACT_APP_API_URL: API operation address</p>
-</li>
-</ul>
-<p>After a successful setup, the installation of packages kicks in. Once that’s done, a confirmation text should appear, indicating TeleDrive’s successful launch.  </p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANfZkxA5GJE_T7oyIy0bXrd2-k1LgkAAmoNAAJ5F2hWE-S1rxJfImw1BA" alt="Alt Text" class="lazyload"></p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANgZkxBG1HUPwdpsKx8HHTPlRTmBR8AAmsNAAJ5F2hW38JvjxQUreo1BA" alt="Alt Text" class="lazyload"></p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANhZkxBO8KAEvCOaJbqcKOjTBvZNocAAmwNAAJ5F2hWeQkpzxbN8y41BA" alt="Alt Text" class="lazyload"></p>
-<p><strong>Getting APP_ID and API_HASH</strong></p>
-<p>Let’s head over to <a target="_blank" rel="noopener" href="http://my.telegram.org/">my.telegram.org</a> and log in using your phone number.</p>
-<p>Create an application and gather its data.  </p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANiZkxBbXd6ffiCFqRwtbU6MfLw0EcAAm0NAAJ5F2hW91HTLnZVquE1BA" alt="Alt Text" class="lazyload"></p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANjZkxBkKCYwzuD4-SPp5nwJZxpkLgAAm4NAAJ5F2hWsg-PfaRB4q81BA" alt="Alt Text" class="lazyload"></p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANkZkxBtd9mX-QXBDOjzFxAVKmTToMAAm8NAAJ5F2hWKD5JPxNxZlU1BA" alt="Alt Text" class="lazyload"></p>
-<p><strong>Linking to the Database</strong></p>
-<p>Create and import data into the database.</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANlZkxB1rRyfgOkcozK1xbYngXF27kAAnANAAJ5F2hWYirs0nM2SaA1BA" alt="Alt Text" class="lazyload"></p>
-<p><strong>Creating:</strong></p>
-<p>To get started, access PostgreSQL:</p>
-<pre><code class="highlight plaintext">arduinoCopy codepsql -U postgres
-# or
-sudo su - postgres
-psql</code></pre>
-
-<p>Then, execute the following command:</p>
-<pre><code class="highlight plaintext">sqlCopy codeCREATE DATABASE teledrive;</code></pre>
-
-<p>Note: If you perform these actions, you’ll also need to import server variables.</p>
-<p><strong>DATABASE_URL:</strong> postgresql:&#x2F;&#x2F;postgres@localhost:5432&#x2F;teledrive</p>
-<p>Then, watch in awe as TeleDrive works its magic and showcases its wonders through screenshots.</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANmZkxCChH9iJ-u5hwvb00XRuB75R0AAnENAAJ5F2hWgVbEjGthQNE1BA" alt="Alt Text" class="lazyload"></p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANnZkxCKjZxEhDOloCScjDFXCaFu40AAnMNAAJ5F2hW1IJyzzIhtAABNQQ" alt="Alt Text" class="lazyload"></p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANoZkxCUKFXfVpk2tuzF-_m_5_SGhgAAnQNAAJ5F2hWILzf-OmXeEs1BA" alt="Alt Text" class="lazyload"></p>
-<p><img src="/:/c1432bce903740f7b4f129d6e2db5db4"></p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANpZkxCcTEOmGbXXcJVc5swXwmuRs8AAnUNAAJ5F2hWiTK_ifbo0xo1BA" alt="Alt Text" class="lazyload"></p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANqZkxCj91nYW5Jyzxo_IjZeaZ5r5kAAnYNAAJ5F2hW7eKnZHWKLuU1BA" alt="Alt Text" class="lazyload"></p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANrZkxCusu2YPzn64Yn0vPf92YMlKIAAncNAAJ5F2hWWdTQm2b-3Hg1BA" alt="Alt Text" class="lazyload"></p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANsZkxC1jVIqATXZJ56fvuiJweB7DUAAngNAAJ5F2hWP2MmUnttReM1BA" alt="Alt Text" class="lazyload"></p>
-<p>到此创建完毕，你可以使用它了。</p>
-
-            
-        </article>
-    </div>
     
-    <div class="nexmoe-post">
-        <a href="/2024/05/21/00001/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 24.305555555555554%;">
-                    <img data-src="/images/background/top.jpg" data-sizes="auto" alt="利用闲置服务器搭建一个专属图床加速器" class="lazyload">
-                    <h1>利用闲置服务器搭建一个专属图床加速器</h1>
-                </div>
-            
-        </a>
-        
-        <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月21日</a>
-            <a><i class="nexmoefont icon-areachart"></i>865 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
-        </div>
-        
-        <article>
-            
-                <h1 id="利用闲置服务器搭建一个专属图床加速器"><a href="#利用闲置服务器搭建一个专属图床加速器" class="headerlink" title="利用闲置服务器搭建一个专属图床加速器"></a>利用闲置服务器搭建一个专属图床加速器</h1><ol>
-<li><a href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6">1. 前提条件</a></li>
-<li><a href="#%E6%95%99%E7%A8%8B">2. 教程</a></li>
-<li><a href="#%E6%80%BB%E7%BB%93">3. 总结</a></li>
-</ol>
-<h3 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a><a href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" title="前提条件"></a>前提条件</h3><ul>
-<li>一台国内能流畅访问且能正常访问Github的服务器</li>
-<li>Nginx</li>
-<li>域名（非必需）</li>
-<li>Python</li>
-</ul>
-<p>关于图床和Nginx的教程，你可以查看之前的文章。</p>
-<h3 id="教程"><a href="#教程" class="headerlink" title="教程"></a><a href="#%E6%95%99%E7%A8%8B" title="教程"></a>教程</h3><p><strong>第一步：</strong></p>
-<p>拉取Github图片仓库到&#x2F;var&#x2F;www&#x2F;目录下。请替换下面命令中的仓库地址为你自己的地址。</p>
-<pre><code class="highlight plaintext">git clone https://github.com/image</code></pre>
-
-<p><strong>第二步：</strong></p>
-<p>配置Nginx，映射当前图片仓库目录。假设我的图片仓库地址是：&#x2F;var&#x2F;www&#x2F;image。以下配置的作用是，当访问 <a target="_blank" rel="noopener" href="http://aaa.wangwangit.com/img/1.jpg">http://aaa.wangwangit.com/img/1.jpg</a> 时，会实际访问服务器上的 &#x2F;var&#x2F;www&#x2F;image&#x2F;img&#x2F;1.jpg 文件。</p>
-<pre><code class="highlight plaintext">server &#123;
-    listen 80;
-    server_name aaa.wangwangit.com;
-    root /var/www/html;
- 
-    location /img &#123;
-        root /var/www/image/;
-        autoindex on;
-    &#125;
-&#125;</code></pre>
-
-<p>完成修改后，执行 <code>nginx -s reload</code> 命令来更新配置。</p>
-<p><strong>第三步：</strong></p>
-<p>上面两步实际上已经配置好了图床的加速器。我们只需要使用自己的域名地址进行访问即可。也许你会问为什么要使用Github，而不是直接将图片存储在服务器上。这样做有几个原因：首先，我的以前的图片已经存在Github上了；另外，使用Github的话，我不需要自己去维护图床。</p>
-<p>接下来，我们还需要及时拉取Github图床的更新。下面我来介绍如何实现这一点。</p>
-<p>我们可以使用Github的Webhook功能，在服务器的&#x2F;var&#x2F;www&#x2F;目录下创建一个名为webhook_receiver.py的Python文件，并编辑以下内容：</p>
-<pre><code class="highlight plaintext">from flask import Flask, request
-import subprocess
-
-app = Flask(__name__)
-
-@app.route(&#x27;/webhook&#x27;, methods=[&#x27;POST&#x27;])
-def webhook():
-    if request.headers.get(&#x27;X-GitHub-Event&#x27;) == &#x27;push&#x27;:
-        subprocess.Popen([&#x27;git&#x27;, &#x27;-C&#x27;, &#x27;/var/www/image&#x27;, &#x27;pull&#x27;])
-        return &#x27;Webhook received successfully&#x27;, 200
-    else:
-        return &#x27;Unsupported event&#x27;, 200
-
-if __name__ == &#x27;__main__&#x27;:
-    app.run(host=&#x27;0.0.0.0&#x27;, port=5000)</code></pre>
-
-<p>保存文件后，执行 <code>pip install flask</code> 命令来安装依赖。你可以先使用 <code>python3 webhook_receiver.py</code> 命令进行测试，确认是否正常运行。若一切正常，可以使用 <code>Ctrl+c</code> 结束执行，然后使用 <code>nohup python3 webhook_receiver.py &amp;</code> 命令来运行它。</p>
-<p>接下来，在Github项目中设置Webhook：</p>
-<ol>
-<li>打开你的项目页面，点击 “Settings”（设置）选项卡。</li>
-<li>在左侧导航栏中选择 “Webhooks”（Web钩子）。</li>
-<li>点击 “Add webhook”（添加Webhook）按钮。</li>
-<li>在 “Payload URL”（有效载荷 URL）字段中输入 <code>http://your-server-ip:5000/webhook</code>，将 <code>your-server-ip</code> 替换为你服务器的实际IP地址。</li>
-<li>在 “Content type”（内容类型）字段中选择 “application&#x2F;json”。</li>
-<li>在 “Secret”（密钥）字段中输入一个可选的密钥，用于在请求中进行身份验证。</li>
-<li>在 “Which events would you like to trigger this webhook?”（您想要触发此Webhook的事件？）部分选择 “Just the push event”（仅推送事件）选项。</li>
-<li>确保 “Active”（启用）复选框被选中。</li>
-<li>点击 “Add webhook”（添加Webhook）按钮保存设置。</li>
-</ol>
-<img width="908" height="487" src="https://cdn.icandy.top/d/BQACAgUAAxkDAANQZkwRdgpWf-oEvJKflINzD487rZcAAlkPAAJ5F2BWV_vpnTUMfhA1BA"/>
-
-<p>至此，部署完成。只需要在图床仓库上传一张图片，然后使用服务器的域名去访问，就可以测试是否配置正常了！</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><a href="#%E6%80%BB%E7%BB%93" title="总结"></a>总结</h3><p>我在文章中提到的几个方案，在之前的文章中都有详细介绍。如果你还有不懂的地方，可以去查看相关文章，或者加入我的交流学习群一起探讨！</p>
-
-            
-        </article>
-    </div>
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%AD%A6%E4%B9%A0%E6%88%90%E9%95%BF/">学习成长</a>
     
-    <div class="nexmoe-post">
-        <a href="/2024/05/20/study-for-hexo/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 24.305555555555554%;">
-                    <img data-src="/images/background/top.jpg" data-sizes="auto" alt="学习hexo博客系统" class="lazyload">
-                    <h1>学习hexo博客系统</h1>
-                </div>
-            
-        </a>
-        
-        <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月20日</a>
-            <a><i class="nexmoefont icon-areachart"></i>0 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
-        </div>
-        
-        <article>
-            
-                
-            
-        </article>
-    </div>
     
-    <div class="nexmoe-post">
-        <a href="/2024/05/20/frist-artice/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 26.666666666666668%;">
-                    <img data-src="/images/post/ui.jpg" data-sizes="auto" alt="博客的第一篇文章" class="lazyload">
-                    <h1>博客的第一篇文章</h1>
-                </div>
-            
-        </a>
-        
-        <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月20日</a>
-            <a><i class="nexmoefont icon-areachart"></i>20 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
-        </div>
-        
-        <article>
-            
-                <h1 id="我的第一篇文章"><a href="#我的第一篇文章" class="headerlink" title="我的第一篇文章"></a>我的第一篇文章</h1><p>这是网站创建后的第一篇文章。</p>
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%88%90%E9%95%BF/" rel="tag">学习成长</a>
+    
+</div>
 
-            
-        </article>
-    </div>
-    
+    <div class="nexmoe-post-footer">
+        <section class="nexmoe-comment">
+    <div class="valine"></div>
+<script src='https://lib.baomitu.com/valine/1.3.9/Valine.min.js'></script>
+<script>
+    // 使用方法 https://valine.js.org/quickstart.html
+    new Valine({
+        el: '.valine',
+        appId: '7HI8j5qRrWtixH9LEqJN67g3-gzGzoHsz',
+        appKey: 'W3iOAoSxnFDbsrbKW5BELucY'
+    })
+</script>
 </section>
+    </div>
+</div>
 
 
         <div class="nexmoe-post-right">
@@ -1457,7 +1160,7 @@ if __name__ == &#x27;__main__&#x27;:
 <script src="/lib/fancybox/js/jquery.fancybox.min.js"></script>
 
 
-<script src="/js/app.js?v=1716273912615"></script>
+<script src="/js/app.js?v=1716273912552"></script>
 
 <script src="https://lib.baomitu.com/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
 <script>

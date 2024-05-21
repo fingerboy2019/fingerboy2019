@@ -34,7 +34,7 @@
   
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
   
-  <link rel="stylesheet" href="/css/style.css?v=1716271695810">
+  <link rel="stylesheet" href="/css/style.css?v=1716273912577">
 <meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/rss.xml" title="奇思妙想" type="application/rss+xml">
 </head>
 
@@ -60,7 +60,7 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div class="nexmoe-count-item"><span>文章</span>4 <div class="item-radius"></div><div class="item-radius item-right"></div> </div>
+        <div class="nexmoe-count-item"><span>文章</span>6 <div class="item-radius"></div><div class="item-radius item-right"></div> </div>
         <div class="nexmoe-count-item"><span>标签</span>3<div class="item-radius"></div><div class="item-radius item-right"></div></div>
         <div class="nexmoe-count-item"><span>分类</span>2<div class="item-radius"></div><div class="item-radius item-right"></div></div>
     </div>
@@ -98,6 +98,13 @@
             <i class="mdui-list-item-icon nexmoefont icon-tangguo"></i>
             <div class="mdui-list-item-content">
                 下载中心
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/rss.xml" title="RSS">
+            <i class="mdui-list-item-icon nexmoefont icon-rss"></i>
+            <div class="mdui-list-item-content">
+                RSS
             </div>
         </a>
         
@@ -158,7 +165,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/学习成长/">学习成长</a>
-          <span class="category-list-count">2</span>
+          <span class="category-list-count">4</span>
         </li>
 
         
@@ -182,7 +189,7 @@
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">文章归档</h3>
     <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -277,6 +284,323 @@
 	    &#125;  
 	&#125;, 1e3);
  &lt;/script&gt;</code></pre>
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2024/05/21/00003/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 26.666666666666668%;">
+                    <img data-src="/images/post/JavaScript.jpg" data-sizes="auto" alt="创建快速稳定的WebSocket长链接" class="lazyload">
+                    <h1>创建快速稳定的WebSocket长链接</h1>
+                </div>
+            
+        </a>
+        
+        <div class="nexmoe-post-meta nexmoe-rainbow">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月21日</a>
+            <a><i class="nexmoefont icon-areachart"></i>1.3k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
+        </div>
+        
+        <article>
+            
+                <h1 id="创建快速稳定的WebSocket长链接"><a href="#创建快速稳定的WebSocket长链接" class="headerlink" title="创建快速稳定的WebSocket长链接"></a>创建快速稳定的WebSocket长链接</h1><p>&nbsp;       在一个完善的即时信息应用中，WebSocket是极其关键的一环，它为基于Web的即时通讯应用提供了一种全双工的通信机制。但为了提升实际应用场景下的消息即时性和可靠性，我们需要克服WebSocket及其底层依赖的TCP连接对于复杂网络情况下的不稳定性，即时通讯的开发者们通常都需要为其设计一套完整的连接保活、验活以及断片网重连方案。就断网重连而言，其重连响应速度将严重影响了上层应用的“即时性”和用户体验。</p>
+<p>&nbsp;       因此，如何在复杂网络场景下，更即时快速地感知网络变动，并快速恢复WebSocket的可用性，就变得尤为重要。本文分享WebSocket在不同状态下、不同的网络状态下，应该如何实现快速断网重连。</p>
+<h4 id="1-WebSocket长链接的基本使用"><a href="#1-WebSocket长链接的基本使用" class="headerlink" title="1. WebSocket长链接的基本使用"></a><a id="t0"></a>1. WebSocket长链接的基本使用</h4><pre><code class="highlight plaintext">// 定义几个变量检测状态
+var WS_URL = &quot;ws://127.0.0.1:9225/ws&quot;;  // websocket地址 http对应ws https对应wss
+var timeout = 30*1000; // 心跳检测时间
+var timeoutObj = null; // 心跳心跳倒计时
+var serverTimeoutObj = null; // 心跳倒计时
+var lockReconnect = false; // 防止
+var timeoutnum = null; // 断开重连倒计时
+
+// 创建websocket
+function initWebSocket()&#123;
+	// WebSocket与普通的请求所用协议有所不同，ws等同于http，wss等同于https
+	window.websocket = new WebSocket(WS_URL);
+	
+	// websocket链接成功回调
+	window.websocket.onopen = websocketonopen;
+	
+	// websocket链接发生错误回调
+	window.websocket.onerror = websocketonerror;
+	
+	// websocket链接获取到消息调用注册全局websocket消息接收事件
+	window.websocket.onmessage = websocketonmessage;
+	
+	// websocket断开消息回调
+	window.websocket.onclose = websocketonclose;
+&#125;
+
+// onopen回调函数
+function websocketonopen() &#123;
+	// 连接成功后开启心跳
+	heart();
+	console.log(&quot;WebSocket连接成功!!!&quot; + new Date() + &quot;----&quot; + window.websocket.readyState);
+&#125;
+
+// onerror回调函数
+function websocketonerror(e) &#123;
+	// 如果发生链接错误 则关闭websocket
+	closeWebSocket();
+	console.log(&quot;WebSocket连接发生错误,重启socket&quot;);
+	console.log(&#x27;Error:&#x27;,e);
+&#125;
+
+// onclose回调函数
+function websocketonclose(e) &#123;
+	window.websocket.close();
+	clearTimeout(timeoutObj);
+	clearTimeout(serverTimeoutObj);
+	console.log(&quot;WebSocket连接关闭,重启socket&quot;);
+	
+	// 链接关闭，执行重新连接
+	reconnect();
+&#125;
+
+// onmessage回调函数
+function websocketonmessage(event) &#123;
+	// 重置心跳检测 
+	reset();
+	
+	// 自定义全局监听事件
+	window.dispatchEvent(
+		new CustomEvent(&quot;onWebSocketMessage&quot;, &#123;
+			detail: &#123;
+				data: event.data,
+			&#125;,
+		&#125;)
+	);
+&#125;
+	
+// 关闭WebSocket
+function closeWebSocket() &#123;
+	// 关闭websocket
+	window.websocket.close();
+&#125;</code></pre>
+
+<h4 id="2-WebSocket使用心跳检测和断开重新连接"><a href="#2-WebSocket使用心跳检测和断开重新连接" class="headerlink" title="2. WebSocket使用心跳检测和断开重新连接"></a><a id="t1"></a>2. WebSocket使用心跳检测和断开重新连接</h4><blockquote>
+<p>为什么使用心跳检测？</p>
+<p>因为WebSocket底层基于tcp连接，所以在有些时候是无法触发onclose函数来感知WebSocket链接已经断开的，例如：切换网络、链路中间路由崩溃、链路的前端出口不可用、服务器负载持续过高无法响应；导致链接断开的原因有很多难以把控，所以通过心跳检测的方式定时向服务端发送消息，服务端返回心跳检测消息，前端根据消息判断是否出现err，如果出现err则说明连接断开，进行重新连接，通过这样可以保证链接的；</p>
+</blockquote>
+<pre><code class="highlight plaintext">// 心跳检测函数
+function heart()&#123;
+	//清除延时器
+	timeoutObj &amp;&amp; clearTimeout(timeoutObj);
+	serverTimeoutObj &amp;&amp; clearTimeout(serverTimeoutObj);
+	timeoutObj = setTimeout(() =&gt; &#123;
+		if (window.websocket &amp;&amp; window.websocket.readyState == 1) &#123;
+			//发送消息，服务端返回信息，即表示连接良好，可以在socket的onmessage事件重置心跳机制函数
+			window.websocket.send(&quot;heart&quot;);
+		&#125; else &#123;
+			//如果不返回消息 则执行WebSocket重连
+			reconnect();
+		&#125;
+		
+		//定义一个延时器等待服务器响应，若超时，则关闭连接，重新请求server建立socket连接
+		serverTimeoutObj = setTimeout(() =&gt; &#123;
+				window.websocket.close();
+		&#125;, timeout);
+	&#125;, timeout);
+&#125;
+
+// 收到消息后重新执行心跳检测
+function reset() &#123;
+	// 重置心跳 清除时间
+	clearTimeout(timeoutObj);
+	clearTimeout(serverTimeoutObj);
+	
+	// 重启心跳
+	heart();
+&#125;
+
+// 重连接函数
+function reconnect()&#123;
+	if (lockReconnect) return;
+	lockReconnect = true;
+	
+	//没连接上会一直重连，设置延迟避免请求过多
+	timeoutnum &amp;&amp; clearTimeout(timeoutnum);
+	timeoutnum = setTimeout(() =&gt; &#123;
+		initWebSocket();
+		lockReconnect = false;
+	&#125;, 5000);
+&#125;</code></pre>
+
+<h4 id="3-监测电脑网络状态，实现断开快速重新连接"><a href="#3-监测电脑网络状态，实现断开快速重新连接" class="headerlink" title="3. 监测电脑网络状态，实现断开快速重新连接"></a><a id="t2"></a>3. 监测电脑网络状态，实现断开快速重新连接</h4><blockquote>
+<p>javascript通过监听online和offline事件判断网络状态</p>
+<p>心跳检测的弊端在于定时发送请求，即时性不够。通过网络状态监测可以更快感知断开，弥补心跳检测的缺点，使链接更快速，系统更稳定</p>
+</blockquote>
+<pre><code class="highlight plaintext">// 监听网络状态
+window.addEventListener(&quot;online&quot;, () =&gt; &#123;
+	console.log(&quot;网络正常&quot;);
+&#125;);
+
+window.addEventListener(&quot;offline&quot;, () =&gt; &#123;
+	console.log(&quot;网络断开&quot;);
+	
+	// 网络断开则重连
+	reconnect()
+&#125;);</code></pre>
+
+<h4 id="4-注册全局WebSocket监听事件，保证在模块化开发中任何地方都能用到同一个WebSocket，不用重新创建连接。"><a href="#4-注册全局WebSocket监听事件，保证在模块化开发中任何地方都能用到同一个WebSocket，不用重新创建连接。" class="headerlink" title="4. 注册全局WebSocket监听事件，保证在模块化开发中任何地方都能用到同一个WebSocket，不用重新创建连接。"></a><a id="t3"></a>4. 注册全局WebSocket监听事件，保证在模块化开发中任何地方都能用到同一个WebSocket，不用重新创建连接。</h4><pre><code class="highlight plaintext">// onmessage回调函数
+function websocketonmessage(event) &#123;
+	// 重置心跳检测 
+	reset();
+	
+	// 自定义全局监听事件
+	window.dispatchEvent(
+		new CustomEvent(&quot;onWebSocketMessage&quot;, &#123;
+			detail: &#123;
+				data: event.data,
+			&#125;,
+		&#125;)
+	);
+&#125;
+
+// 全局可以监听websocket onmessage事件
+window.addEventListener(&quot;onWebSocketMessage&quot;, businessFunction);
+
+// 获取到websocket返回执行业务代码
+function businessFunction(data)&#123;
+	console.log(&quot;Data::::&quot;,data)
+&#125;</code></pre>
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2024/05/21/00004/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 26.666666666666668%;">
+                    <img data-src="/images/post/JavaScript.jpg" data-sizes="auto" alt="使用 Telegram 创建无限容量的云存储" class="lazyload">
+                    <h1>使用 Telegram 创建无限容量的云存储</h1>
+                </div>
+            
+        </a>
+        
+        <div class="nexmoe-post-meta nexmoe-rainbow">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月21日</a>
+            <a><i class="nexmoefont icon-areachart"></i>531 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 2 分钟</a>
+        </div>
+        
+        <article>
+            
+                <h1 id="TeleDrive-Unleash-Unlimited-Cloud-Storage-with-Telegram"><a href="#TeleDrive-Unleash-Unlimited-Cloud-Storage-with-Telegram" class="headerlink" title="TeleDrive: Unleash Unlimited Cloud Storage with Telegram"></a>TeleDrive: Unleash Unlimited Cloud Storage with Telegram</h1><p>大家好！今天，我将指导您使用 TeleDrive 在 Telegram 上创建无限的云存储解决方案。这个开源项目改变了游戏规则，通过 Telegram API 提供 Google Drive&#x2F;OneDrive 等功能。</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANTZkw-lz8AARpugt-Mxaz2T-HJKat4AAJZDQACeRdoVq4qYowhUWPKNQQ" alt="Alt Text" class="lazyload"></p>
+<p><strong>创建云</strong></p>
+<p>对于那些在各种论坛或 YouTube 上寻求信息的人来说，这是微不足道的选择。我花了大约 2 个小时来解码这个问题，因为脚本正在喝咖啡休息！事实证明，该修复程序在问题存储库中非常漂亮。😂</p>
+<p>与其浪费我们数百万美元的软件工程时间，不如让我们深入学习如何安装 TeleDrive。</p>
+<p><strong>搭建云储存</strong></p>
+<p>让我们从更新我们的软件包开始:</p>
+<pre><code class="highlight plaintext">apt-get update</code></pre>
+
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANUZkw-5UkPp24JnivrLWV9BYwtU5MAAloNAAJ5F2hW-m4AAUw-UihZNQQ" alt="Alt Text" class="lazyload"></p>
+<p>软后安装 Build-essentials:</p>
+<pre><code class="highlight plaintext">apt-get install build-essential</code></pre>
+
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANVZkw_C5Qb7ySlNdvtkaPLF6XSp98AAlsNAAJ5F2hWHsctHi4jemw1BA" alt="Alt Text" class="lazyload"></p>
+<p>接下来，让我们用 git-clone 获取 fork 存储库:</p>
+<pre><code class="highlight plaintext">git clone https://github.com/mgilangjanuar/teledrive.git</code></pre>
+
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANWZkw_Th3nDpRJ8RFWFUqr0jksPlgAAl0NAAJ5F2hWBoBdoRt7ZpU1BA" alt="Alt Text" class="lazyload"></p>
+<p>如果 Git不可用，请先安装Git:</p>
+<pre><code class="highlight plaintext">apt install git</code></pre>
+
+<p><strong>部署过程</strong></p>
+<p>首先安装NVM（Node版本管理器）:</p>
+<pre><code class="highlight plaintext">wget https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh</code></pre>
+
+<p>下载完脚本后:  </p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANXZkw_hOIugmfoj1C9M4qYyPa5LN4AAl4NAAJ5F2hW9RBjBtC66Hc1BA" alt="Alt Text" class="lazyload"></p>
+<pre><code class="highlight plaintext">bash install.sh
+source ~/.bashrc</code></pre>
+
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANYZkw_tDUXIOYhakHdcqkHwkOCB9UAAl8NAAJ5F2hWEhEa3fuPV281BA" alt="Alt Text" class="lazyload"></p>
+<p>确保 NVM 启动并运行:</p>
+<pre><code class="highlight plaintext">nvm -v</code></pre>
+
+<p><img src="/:/4f0a0beddf2248609d2554d956f1d308"></p>
+<p>用NVM安装 Node.JS 18.16.0:</p>
+<pre><code class="highlight plaintext">nvm install v18.16.0</code></pre>
+
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANZZkw__CgIJ8mgMTcx-R7YBzdh03MAAmANAAJ5F2hWwZem8BRua3M1BA" alt="Alt Text" class="lazyload"></p>
+<p>检查 Node.JS 和 NPM 到版本:</p>
+<pre><code class="highlight plaintext">node -v
+npm -v</code></pre>
+
+<p>现在，让我们进入下载的 GitHub 项目:</p>
+<pre><code class="highlight plaintext">cd teledrive</code></pre>
+
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANaZkxAKNDePwP4ZkaeK3p1YfQ14P0AAmINAAJ5F2hWPTlGrtHCJvQ1BA" alt="Alt Text" class="lazyload"></p>
+<p>我们需要安装 Yarn 和 PostgreSQL:</p>
+<pre><code class="highlight plaintext">sudo apt install postgresql -y</code></pre>
+
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANbZkxASZqp_m6ocVMP7jR-c0kOxdYAAmUNAAJ5F2hWDFwOeVbLSSM1BA" alt="Alt Text" class="lazyload"></p>
+<p>我们用常规方式安装 TeleDrive:</p>
+<pre><code class="highlight plaintext">chmod +x ./install.manual.sh
+./install.manual.sh</code></pre>
+
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANcZkxAeHEro4xzZNQbsntgc1Jd23oAAmYNAAJ5F2hWmNdil79ZSew1BA" alt="Alt Text" class="lazyload"></p>
+<p><strong>Configuring TeleDrive</strong></p>
+<p>Parameters will pop up that require filling:</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANdZkxAnPdYP3zz1mF8ttwjmNtcpgsAAmcNAAJ5F2hWuYDKi-ue8mE1BA" alt="Alt Text" class="lazyload"></p>
+<ul>
+<li><p>TG_API_ID: Application ID</p>
+</li>
+<li><p>TG_API_HASH: The hash</p>
+</li>
+</ul>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANeZkxAw7Vfl1yI8cgZ2f0OlqsKxZ4AAmgNAAJ5F2hWa6YmHtrTDZA1BA" alt="Alt Text" class="lazyload"></p>
+<ul>
+<li><p>ADMIN_USERNAME: Telegram username (should be admin)</p>
+</li>
+<li><p>DATABASE_URL: Your postgres database</p>
+</li>
+<li><p>PORT: Operational port</p>
+</li>
+<li><p>REACT_APP_API_URL: API operation address</p>
+</li>
+</ul>
+<p>After a successful setup, the installation of packages kicks in. Once that’s done, a confirmation text should appear, indicating TeleDrive’s successful launch.  </p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANfZkxA5GJE_T7oyIy0bXrd2-k1LgkAAmoNAAJ5F2hWE-S1rxJfImw1BA" alt="Alt Text" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANgZkxBG1HUPwdpsKx8HHTPlRTmBR8AAmsNAAJ5F2hW38JvjxQUreo1BA" alt="Alt Text" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANhZkxBO8KAEvCOaJbqcKOjTBvZNocAAmwNAAJ5F2hWeQkpzxbN8y41BA" alt="Alt Text" class="lazyload"></p>
+<p><strong>Getting APP_ID and API_HASH</strong></p>
+<p>Let’s head over to <a target="_blank" rel="noopener" href="http://my.telegram.org/">my.telegram.org</a> and log in using your phone number.</p>
+<p>Create an application and gather its data.  </p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANiZkxBbXd6ffiCFqRwtbU6MfLw0EcAAm0NAAJ5F2hW91HTLnZVquE1BA" alt="Alt Text" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANjZkxBkKCYwzuD4-SPp5nwJZxpkLgAAm4NAAJ5F2hWsg-PfaRB4q81BA" alt="Alt Text" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANkZkxBtd9mX-QXBDOjzFxAVKmTToMAAm8NAAJ5F2hWKD5JPxNxZlU1BA" alt="Alt Text" class="lazyload"></p>
+<p><strong>Linking to the Database</strong></p>
+<p>Create and import data into the database.</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANlZkxB1rRyfgOkcozK1xbYngXF27kAAnANAAJ5F2hWYirs0nM2SaA1BA" alt="Alt Text" class="lazyload"></p>
+<p><strong>Creating:</strong></p>
+<p>To get started, access PostgreSQL:</p>
+<pre><code class="highlight plaintext">arduinoCopy codepsql -U postgres
+# or
+sudo su - postgres
+psql</code></pre>
+
+<p>Then, execute the following command:</p>
+<pre><code class="highlight plaintext">sqlCopy codeCREATE DATABASE teledrive;</code></pre>
+
+<p>Note: If you perform these actions, you’ll also need to import server variables.</p>
+<p><strong>DATABASE_URL:</strong> postgresql:&#x2F;&#x2F;postgres@localhost:5432&#x2F;teledrive</p>
+<p>Then, watch in awe as TeleDrive works its magic and showcases its wonders through screenshots.</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANmZkxCChH9iJ-u5hwvb00XRuB75R0AAnENAAJ5F2hWgVbEjGthQNE1BA" alt="Alt Text" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANnZkxCKjZxEhDOloCScjDFXCaFu40AAnMNAAJ5F2hW1IJyzzIhtAABNQQ" alt="Alt Text" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANoZkxCUKFXfVpk2tuzF-_m_5_SGhgAAnQNAAJ5F2hWILzf-OmXeEs1BA" alt="Alt Text" class="lazyload"></p>
+<p><img src="/:/c1432bce903740f7b4f129d6e2db5db4"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANpZkxCcTEOmGbXXcJVc5swXwmuRs8AAnUNAAJ5F2hWiTK_ifbo0xo1BA" alt="Alt Text" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANqZkxCj91nYW5Jyzxo_IjZeaZ5r5kAAnYNAAJ5F2hW7eKnZHWKLuU1BA" alt="Alt Text" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANrZkxCusu2YPzn64Yn0vPf92YMlKIAAncNAAJ5F2hWWdTQm2b-3Hg1BA" alt="Alt Text" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANsZkxC1jVIqATXZJ56fvuiJweB7DUAAngNAAJ5F2hWP2MmUnttReM1BA" alt="Alt Text" class="lazyload"></p>
+<p>到此创建完毕，你可以使用它了。</p>
+
             
         </article>
     </div>
@@ -1133,7 +1457,7 @@ if __name__ == &#x27;__main__&#x27;:
 <script src="/lib/fancybox/js/jquery.fancybox.min.js"></script>
 
 
-<script src="/js/app.js?v=1716271695816"></script>
+<script src="/js/app.js?v=1716273912582"></script>
 
 <script src="https://lib.baomitu.com/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
 <script>
@@ -1150,8 +1474,6 @@ if __name__ == &#x27;__main__&#x27;:
 
 
 <!-- hexo injector body_end start -->
-<script src="/js/clock.js"></script>
-
 <script src="https://lib.baomitu.com/clipboard.js/2.0.8/clipboard.min.js"></script>
 
 <script src="/lib/codeBlock/codeBlockFuction.js"></script>
@@ -1164,11 +1486,13 @@ if __name__ == &#x27;__main__&#x27;:
 
 <link rel="stylesheet" href="/lib/codeBlock/matery.css">
 
-<script src="/js/webapp.js"></script>
-
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 <script src="/js/search.js"></script>
+
+<script src="/js/webapp.js"></script>
+
+<script src="/js/clock.js"></script>
 <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
 
