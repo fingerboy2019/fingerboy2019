@@ -6,7 +6,7 @@
 <head>
   
   <meta name="baidu-site-verification" content="code-J1Qg17G6wT" />
-  <title>学习hexo博客系统 - 奇思妙想</title>
+  <title>屏蔽页面调试 - 奇思妙想</title>
   <meta charset="UTF-8">
   <meta name="description" content="发布一些自己的想法，留一些网络印记。">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
@@ -17,16 +17,17 @@
     <meta name="baidu-site-verification" content="code-J1Qg17G6wT" />
 
   <link rel="shortcut icon" href="/images/head/head.jpg" type="image/png" />
-  <meta name="description" content="发布一些自己的想法，留一些网络印记。">
+  <meta name="description" content="屏蔽页面调试的js代码&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;    	document.onkeydown&#x3D;function()&#123; 		var e &#x3D; window.event||arguments[0]; 			if(e.keyCode&#x3D;&#x3D;123)&#123; 				alert(&#x27;你知道的太多了&#x27;);">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学习hexo博客系统">
-<meta property="og:url" content="http://blog.icandy.top/2024/05/20/study-for-hexo/index.html">
+<meta property="og:title" content="屏蔽页面调试">
+<meta property="og:url" content="http://blog.icandy.top/2024/05/21/00002/index.html">
 <meta property="og:site_name" content="奇思妙想">
-<meta property="og:description" content="发布一些自己的想法，留一些网络印记。">
+<meta property="og:description" content="屏蔽页面调试的js代码&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;    	document.onkeydown&#x3D;function()&#123; 		var e &#x3D; window.event||arguments[0]; 			if(e.keyCode&#x3D;&#x3D;123)&#123; 				alert(&#x27;你知道的太多了&#x27;);">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-20T03:25:59.000Z">
-<meta property="article:modified_time" content="2024-05-20T03:25:59.431Z">
+<meta property="article:published_time" content="2024-05-21T03:50:55.000Z">
+<meta property="article:modified_time" content="2024-05-21T03:52:02.741Z">
 <meta property="article:author" content="fingerboy">
+<meta property="article:tag" content="学习成长">
 <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="https://lib.baomitu.com/highlight.js/9.15.8/styles/atom-one-dark.min.css" crossorigin>
   <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css">
@@ -36,7 +37,7 @@
   
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
   
-  <link rel="stylesheet" href="/css/style.css?v=1716270677611">
+  <link rel="stylesheet" href="/css/style.css?v=1716270677564">
 <meta name="generator" content="Hexo 7.2.0"></head>
 
 <body class="mdui-drawer-body-left">
@@ -220,16 +221,15 @@
     <div class="nexmoe-primary">
         <div class="nexmoe-post">
     
-        <div class="nexmoe-post-cover"
-             style="padding-bottom: 24.305555555555554%;">
-            <img data-src="/images/background/top.jpg" data-sizes="auto" alt="学习hexo博客系统" class="lazyload">
-            <h1>学习hexo博客系统</h1>
+        <div class="nexmoe-post-cover" style="padding-bottom: 26.666666666666668%;">
+            <img data-src="/images/post/JavaScript.jpg" data-sizes="auto" alt="屏蔽页面调试" class="lazyload">
+            <h1>屏蔽页面调试</h1>
         </div>
     
 
         <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
-    <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月20日</a>
-    <a><i class="nexmoefont icon-areachart"></i>0 字</a>
+    <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月21日</a>
+    <a><i class="nexmoefont icon-areachart"></i>172 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
 </div>
 
@@ -238,7 +238,46 @@
         </div>
 
         <article>
-            
+            <h1 id="屏蔽页面调试的js代码"><a href="#屏蔽页面调试的js代码" class="headerlink" title="屏蔽页面调试的js代码"></a>屏蔽页面调试的js代码</h1><pre><code class="highlight plaintext">&lt;script type=&quot;text/javascript&quot;&gt;   
+	document.onkeydown=function()&#123;
+		var e = window.event||arguments[0];
+			if(e.keyCode==123)&#123;
+				alert(&#x27;你知道的太多了&#x27;);
+				return false;
+			&#125;
+         
+		if((e.ctrlKey)&amp;&amp;(e.shiftKey)&amp;&amp;(e.keyCode==73))&#123;
+			alert(&#x27;你知道的太多了&#x27;);
+			return false;
+		&#125;
+		if((e.ctrlKey)&amp;&amp;(e.keyCode==85))&#123;
+			alert(&#x27;你知道的太多了&#x27;);
+			return false;
+		&#125;
+		if((e.ctrlKey)&amp;&amp;(e.keyCode==83))&#123;
+		   alert(&#x27;你知道的太多了&#x27;);
+		   return false;
+		&#125;
+        	&#125;
+   
+	document.oncontextmenu=function()&#123;
+		alert(&#x27;你知道的太多了&#x27;);
+		return false;
+	&#125;
+  
+	var threshold = 160;
+	window.setInterval(function() &#123;  
+	    if (window.outerWidth - window.innerWidth &gt; threshold ||   
+	    window.outerHeight - window.innerHeight &gt; threshold) &#123;  
+			function disableDebugger() &#123;
+				debugger;
+			&#125;
+			$(document).ready(function () &#123;
+				disableDebugger();
+			&#125;);
+	    &#125;  
+	&#125;, 1e3);
+ &lt;/script&gt;</code></pre>
         </article>
 
         
@@ -246,7 +285,7 @@
   <div class="nexmoe-post-copyright">
     <strong>本文作者：</strong>fingerboy<br>
     
-    <strong>本文链接：</strong><a href="http://blog.icandy.top/2024/05/20/study-for-hexo/" title="http:&#x2F;&#x2F;blog.icandy.top&#x2F;2024&#x2F;05&#x2F;20&#x2F;study-for-hexo&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;blog.icandy.top&#x2F;2024&#x2F;05&#x2F;20&#x2F;study-for-hexo&#x2F;</a><br>
+    <strong>本文链接：</strong><a href="http://blog.icandy.top/2024/05/21/00002/" title="http:&#x2F;&#x2F;blog.icandy.top&#x2F;2024&#x2F;05&#x2F;21&#x2F;00002&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;blog.icandy.top&#x2F;2024&#x2F;05&#x2F;21&#x2F;00002&#x2F;</a><br>
 
     
   </div>
@@ -256,6 +295,10 @@
 
         <div class="nexmoe-post-meta nexmoe-rainbow">
     
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%AD%A6%E4%B9%A0%E6%88%90%E9%95%BF/">学习成长</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%88%90%E9%95%BF/" rel="tag">学习成长</a>
     
 </div>
 
@@ -988,7 +1031,7 @@
 <script src="/lib/fancybox/js/jquery.fancybox.min.js"></script>
 
 
-<script src="/js/app.js?v=1716270677616"></script>
+<script src="/js/app.js?v=1716270677599"></script>
 
 <script src="https://lib.baomitu.com/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
 <script>
