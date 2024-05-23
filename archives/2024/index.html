@@ -34,7 +34,7 @@
   
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
   
-  <link rel="stylesheet" href="/css/style.css?v=1716277319237">
+  <link rel="stylesheet" href="/css/style.css?v=1716430155379">
 <meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/rss.xml" title="奇思妙想" type="application/rss+xml">
 </head>
 
@@ -60,7 +60,7 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div class="nexmoe-count-item"><span>文章</span>6 <div class="item-radius"></div><div class="item-radius item-right"></div> </div>
+        <div class="nexmoe-count-item"><span>文章</span>8 <div class="item-radius"></div><div class="item-radius item-right"></div> </div>
         <div class="nexmoe-count-item"><span>标签</span>3<div class="item-radius"></div><div class="item-radius item-right"></div></div>
         <div class="nexmoe-count-item"><span>分类</span>2<div class="item-radius"></div><div class="item-radius item-right"></div></div>
     </div>
@@ -165,7 +165,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/学习成长/">学习成长</a>
-          <span class="category-list-count">4</span>
+          <span class="category-list-count">6</span>
         </li>
 
         
@@ -189,7 +189,7 @@
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">文章归档</h3>
     <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -601,6 +601,127 @@ psql</code></pre>
 <p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANsZkxC1jVIqATXZJ56fvuiJweB7DUAAngNAAJ5F2hWP2MmUnttReM1BA" alt="Alt Text" class="lazyload"></p>
 <p>到此创建完毕，你可以使用它了。</p>
 
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2024/05/21/00005/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 26.666666666666668%;">
+                    <img data-src="/images/post/data.jpg" data-sizes="auto" alt="终端管理器Zsh" class="lazyload">
+                    <h1>终端管理器Zsh</h1>
+                </div>
+            
+        </a>
+        
+        <div class="nexmoe-post-meta nexmoe-rainbow">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月21日</a>
+            <a><i class="nexmoefont icon-areachart"></i>1.2k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
+        </div>
+        
+        <article>
+            
+                <blockquote>
+<p>终端管理器Zsh</p>
+</blockquote>
+<p>linux默认的shell太low了，<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=iTerm2&spm=1001.2101.3001.7020">iTerm2</a>在macOS系统简直堪称终端管理神器，有一款可以平替iTem2的软件 <a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh">Zsh（Z shell）</a> ，<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Zsh&spm=1001.2101.3001.7020">Zsh</a> 是一个为交互使用而设计的 shell</p>
+<h2 id="一：安装Zsh"><a href="#一：安装Zsh" class="headerlink" title="一：安装Zsh"></a>一：安装Zsh</h2><h3 id="1-yum安装zsh"><a href="#1-yum安装zsh" class="headerlink" title="1.yum安装zsh"></a>1.yum安装zsh</h3><pre><code class="highlight plaintext">yum install zsh</code></pre>
+
+<p>安装成功查看 <code>yum info zsh</code>或者 <code>zsh --version</code><br><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANvZk6hxoGTwAj_n6TPCZ69x8O5MMwAAqETAAIQ83BWGtNVyqxZpV81BA" alt="Alt Text" class="lazyload"></p>
+<h3 id="2-替换默认shell为Zsh"><a href="#2-替换默认shell为Zsh" class="headerlink" title="2.替换默认shell为Zsh"></a>2.替换默认shell为Zsh</h3><pre><code class="highlight plaintext">chsh -s /bin/zsh #替换默认shell为zsh</code></pre>
+
+<pre><code class="highlight plaintext">chsh -s /bin/bash #替换回默认的shell</code></pre>
+
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANwZk6h_sr1qFwCurkQf6weHAODe-YAAqITAAIQ83BWm0z75GUaCwM1BA" alt="Alt Text" class="lazyload"><br><code>cat /etc/shells</code> 查看当前系统有哪些shell版本<br><code>echo @SHELL</code> 查看当前使用的shell版本</p>
+<h2 id="二：安装Oh-My-Zsh来配置-Zsh"><a href="#二：安装Oh-My-Zsh来配置-Zsh" class="headerlink" title="二：安装Oh My Zsh来配置 Zsh"></a>二：安装Oh My Zsh来配置 Zsh</h2><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANxZk6iHC92QAh6RnMuDE8C0m5K2nkAAqMTAAIQ83BWFTYL6PEzoak1BA" alt="Alt Text" class="lazyload"><br><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh">Oh My Zsh</a>是一个开源的、社区驱动的框架，用于管理您的zsh配置。</p>
+<h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><p>Oh My Zsh 通过在终端中运行以下命令之一来安装。curl您可以使用或wget其他类似工具通过命令行安装它，可以移动github项目官网，查看最新的安装指令，选择一种安装即可，这里用wegt方式安装<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANyZk6iPRxVzAAB9tyYYrHIjDR-xroHAAKkEwACEPNwVuO_cYTc_Z4xNQQ" alt="Alt Text" class="lazyload"></p>
+<pre><code class="highlight plaintext">sh -c &quot;$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></pre>
+
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAANzZk6iYbem3fnpZFSp4h71YQHGXlYAAqUTAAIQ83BWA8E8UvdlQgk1BA" alt="Alt Text" class="lazyload"></p>
+<p>报错，提示未安装git， <code>yum install git</code> 在试就好了，安装完成如下图：</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAAN0Zk6ifcglsAy3SrEOHGtzIy9AjdQAAqYTAAIQ83BWJacQPnyE0EQ1BA" alt="Alt Text" class="lazyload"><br>如图所示安装完成后提示会在&#x2F;roo路径下产生一个.zshrc文件，与.bashrc一样，修改这个文件对zsh进行配置。</p>
+<h3 id="2-更换主题"><a href="#2-更换主题" class="headerlink" title="2.更换主题"></a>2.更换主题</h3><h4 id="2-1内置主题更换"><a href="#2-1内置主题更换" class="headerlink" title="2.1内置主题更换"></a>2.1内置主题更换</h4><h5 id="2-1-1内置的主题看看有哪些"><a href="#2-1-1内置的主题看看有哪些" class="headerlink" title="2.1.1内置的主题看看有哪些"></a>2.1.1内置的主题看看有哪些</h5><p>在这个目录：**.oh-my-zsh&#x2F;themes** 下的所有主题都可用，bira agnoster cypher robbyrussell norm 我简单试了这几个主题</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAAN1Zk6inTBZwngS3HN7HvK7slckCNYAAqcTAAIQ83BWUs4OcNZpv001BA" alt="Alt Text" class="lazyload"></p>
+<h5 id="2-1-2一些比较好的大佬写的主题"><a href="#2-1-2一些比较好的大佬写的主题" class="headerlink" title="2.1.2一些比较好的大佬写的主题"></a>2.1.2一些比较好的大佬写的主题</h5><pre><code class="highlight plaintext">wget https://raw.githubusercontent.com/xwmx/astral/master/astral.zsh-theme</code></pre>
+
+<h5 id="2-1-3修改配置文件"><a href="#2-1-3修改配置文件" class="headerlink" title="2.1.3修改配置文件"></a>2.1.3修改配置文件</h5><p>使用 vim 编辑 &#x2F;root&#x2F;.zshrc 文件，把ZSH_THEME&#x3D;“robbyussell” 改为 ZSH_THEME&#x3D;“agnoster” ，上面展示的专题都可用，有兴趣的自己可以试试，不用加后面的.zsh-theme直接写前面的单词，如下：</p>
+<pre><code class="highlight plaintext">vim /root/.zshrc</code></pre>
+
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAAN2Zk6i2EOcUV9pmGKbQOgSUrzfJ_QAAqgTAAIQ83BWcaHRX33ZtpQ1BA" alt="Alt Text" class="lazyload"></p>
+<h5 id="2-1-4更新配置文件"><a href="#2-1-4更新配置文件" class="headerlink" title="2.1.4更新配置文件"></a>2.1.4更新配置文件</h5><pre><code class="highlight plaintext">source /root/.zshrc</code></pre>
+
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAAN3Zk6jaLHM1b136BAJnXHydu-5MUEAAqkTAAIQ83BWvdfnVm8x6Zo1BA" alt="Alt Text" class="lazyload"></p>
+<h4 id="2-2-Powerlevel10k主题更换"><a href="#2-2-Powerlevel10k主题更换" class="headerlink" title="2.2 Powerlevel10k主题更换"></a>2.2 <a target="_blank" rel="noopener" href="https://github.com/romkatv/powerlevel10k">Powerlevel10k</a>主题更换</h4><p>Powerlevel10k 是用于 Zsh 美化的一个非常酷的主题，它强调速度、 灵活性和开箱即用的体验。</p>
+<h5 id="2-3-1安装Powerlevel10k"><a href="#2-3-1安装Powerlevel10k" class="headerlink" title="2.3.1安装Powerlevel10k"></a><a id="231Powerlevel10k_69"></a>2.3.1安装Powerlevel10k</h5><p>基于Oh My Zsh安装powerlevel10k，放到 <strong>.oh-my-zsh&#x2F;custom&#x2F;themes&#x2F;Powerlevel10k</strong> ，这个目录下,没有Powerlevel10k则新建 <code>mkdir Powerlevel10k</code></p>
+<pre><code class="highlight plaintext">git clone https://github.com/romkatv/powerlevel10k.git /root/.oh-my-zsh/custom/themes/Powerlevel10k</code></pre>
+
+<p>中国用户可以使用 gitee.com 上的官方镜像加速下载.</p>
+<pre><code class="highlight plaintext">git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git $&#123;ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom&#125;/themes/Powerlevel10k</code></pre>
+
+<p>2.3.2 配置<br>（1）参考 <a href="#jump">2.1.2修改配置文件</a>,设置 ZSH_THEME&#x3D;“Powerlevel10k&#x2F;powerlevel10k” ，如下<img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAAN4Zk6jj7MXBdY5Y2E7dZYP9rrKTWQAAqoTAAIQ83BWs3zStK-Khhw1BA" alt="Alt Text" class="lazyload"><br>（2） 执行<code>p10k configure</code>指令开启向导模式，或者修改主题修改文件 <code>vim ~/.p10k.zsh</code> ，来自定义自己喜欢的p10k主题,可玩性比较高，这个方式的是生成新的配置覆盖原来的.p10k.zsh文件<br>（3）也可以使用p10k内置的主题，目前只有6个，我比较喜欢 pure这个主题</p>
+<ul>
+<li>p10k-lean.zsh</li>
+<li>p10k-robbyrussell.zsh</li>
+<li>p10k-classic.zsh</li>
+<li>p10k-pure.zsh</li>
+<li>p10k-lean-8colors.zsh</li>
+<li>p10k-rainbow.zsh</li>
+</ul>
+<p>直接<code>vim /root/.zshrc</code>，文件最后添加下面的代码，配置自上而下加载，所以覆盖上面的.p10k.zsh配置，<code>source /root/.zshrc</code></p>
+<pre><code class="highlight plaintext">#To customize prompt, run `p10k configure` or edit ~/.oh-my-zsh/custom/themes/Powerlevel10k/config/p10k-pure.zsh.
+[[ ! -f ~/.oh-my-zsh/custom/themes/Powerlevel10k/config/p10k-pure.zsh ]] || source ~/.oh-my-zsh/custom/themes/Powerlevel10k/config/p10k-pure.zsh`</code></pre>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAAN5Zk6jwxg6-rvls_a-UH07hOrHITwAAqsTAAIQ83BWu269Ti5irIw1BA" alt="Alt Text" class="lazyload"></p>
+<h3 id="3-插件安装"><a href="#3-插件安装" class="headerlink" title="3.插件安装"></a>3.插件安装</h3><p>Oh My Zsh 提供了大量插件供您利用，可以去看看插件目录 <code>cd /root/.oh-my-zsh/plugins #插件目录</code>，具体插件的功能请看<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins">插件目录介绍</a>。</p>
+<p><strong>推荐插件：</strong><br>( 1 ) <strong><a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-syntax-highlighting">zsh-syntax-highlighting</a></strong> :这个c插件为 shell zsh 提供了语法高亮。当命令在 zsh 提示符下输入交互式终端时，它可以突出显示命令。这有助于在运行命令之前检查命令，特别是在捕获语法错误方面。<br>( 2 ) **<a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-autosuggestions">zsh-autosuggestions</a>**：它会根据历史记录和完成情况在您键入时建议命令，自动补全。<br>( 3 ) <strong><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/wd">wd</a></strong>:wd( warp 目录) 允许你跳转到 zsh 中的自定义目录，而无需使用cd. 为什么？因为cd当文件夹被频繁访问或路径很长时，效率似乎很低。</p>
+<p>####3.1安装插件</p>
+<p>wd插件已经内置了所以不需要下载，只需要下载另外两个到本地项目的插件库 <strong>&#x2F;root&#x2F;.oh-my-zsh&#x2F;plugins</strong></p>
+<pre><code class="highlight plaintext">git clone https://github.com/zsh-users/zsh-autosuggestions /root/.oh-my-zsh/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /root/.oh-my-zsh/plugins/zsh-syntax-highlighting</code></pre>
+
+<p>然后就可以看到插件了<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAAN6Zk6j6NNbnuDBNRuP4Fu71UYzMkcAAqwTAAIQ83BWsfhuzdaL4W81BA" alt="Alt Text" class="lazyload"></p>
+<h4 id="3-2-配置"><a href="#3-2-配置" class="headerlink" title="3.2 配置"></a>3.2 配置</h4><p>修改配置文件，<code>vim /root/.zshrc</code> 然后重启zsh<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAAN7Zk6kEQp6JBOwuS0Z_qb5Wui6magAAq0TAAIQ83BWCKB6daQYu3g1BA" alt="Alt Text" class="lazyload"><br>然后重启zsh</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.icandy.top/d/BQACAgUAAxkDAAN9Zk6kX3PYg5ldN20keK6vo0BMXcEAAq8TAAIQ83BWta96S9PiRU01BA" alt="Alt Text" class="lazyload"><br>是不是很好用，再也不用担心忘记指令了！</p>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2024/05/21/00006/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 26.666666666666668%;">
+                    <img data-src="/images/post/data.jpg" data-sizes="auto" alt="docker 镜像制作" class="lazyload">
+                    <h1>docker 镜像制作</h1>
+                </div>
+            
+        </a>
+        
+        <div class="nexmoe-post-meta nexmoe-rainbow">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月21日</a>
+            <a><i class="nexmoefont icon-areachart"></i>173 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+        </div>
+        
+        <article>
+            
+                <blockquote>
+<p>docker 镜像制作</p>
+</blockquote>
+<pre><code class="highlight plaintext">chmod +x openwrt-x86-64-generic-squashfs-combined-ipv6-201231-Mask.img.gz
+gunzip openwrt-x86-64-generic-squashfs-combined-ipv6-201231-Mask.img.gz
+fdisk openwrt-x86-64-generic-squashfs-combined-ipv6-201231-Mask.img -l
+mkdir op
+mount -o loop,offset=17301504 openwrt-spp-k54-autumn\[2022\]-x86-64-generic-squashfs-legacy.img ./op
+tar czf openwrt.tar.gz -C ./op .
+docker import openwrt.tar.gz fingerboy/openwrt-x86-64
+docker push fingerboy/openwrt-x86-64
+rm -rf openwrt
+docker run --name istore --restart always -d --network macnet --privileged -v /lib/modules:/lib/modules fingerboy/istoreos-x86-64 /sbin/init
+docker run --name btweb --restart always -d --network macnet --privileged -v /lib/modules:/lib/modules -v /opt/docker/volume/centos/www:/www centos /www/init
+docker run -d -it --name btweb -ihost --restart=always --network macnet -v /opt/docker/volume/centos/www:/www btweb:V1 /sbin/inits
+docker commit -a &quot;fingerboy&quot; -m &quot;centos vs btweb start from /init.sh&quot; 3610cccdf9b0 btweb:V1</code></pre>
             
         </article>
     </div>
@@ -1457,7 +1578,7 @@ if __name__ == &#x27;__main__&#x27;:
 <script src="/lib/fancybox/js/jquery.fancybox.min.js"></script>
 
 
-<script src="/js/app.js?v=1716277319242"></script>
+<script src="/js/app.js?v=1716430155384"></script>
 
 <script src="https://lib.baomitu.com/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
 <script>
@@ -1488,11 +1609,11 @@ if __name__ == &#x27;__main__&#x27;:
 
 <link rel="stylesheet" href="/lib/codeBlock/matery.css">
 
+<script src="/js/webapp.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 <script src="/js/search.js"></script>
-
-<script src="/js/webapp.js"></script>
 <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
 
